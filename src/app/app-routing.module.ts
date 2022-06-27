@@ -1,0 +1,63 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
+import { Man11Component } from './pages/man11/man11.component';
+import { TaodonhangComponent } from './pages/taodonhang/taodonhang.component';
+import { CustomerInfoComponent } from './pages/customer-info/customer-info.component';
+import { TaosanphamComponent } from './pages/taosanpham/taosanpham.component';
+import { DetailOrderComponent } from './pages/detail-order/detail-order.component';
+import { LoginAuthGuard } from './core/services/login-auth.guard';
+import { DanhMucHangHoaComponent } from './pages/danh-muc-hang-hoa/danh-muc-hang-hoa.component';
+
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    canActivate: [LoginAuthGuard],
+    component: LoginComponent
+  },
+  {
+    path: 'home',
+    component: Man11Component,
+    
+  },
+  {
+    path: 'taodonhang',
+    component: TaodonhangComponent,
+    
+  },
+  {
+    path: 'danhsachkhachhang',
+    component: CustomerInfoComponent,
+    
+  },
+  {
+    path: 'taokhachhang',
+    component: CustomerInfoComponent,
+    
+  },
+  {
+    path: 'taosanpham',
+    component: TaosanphamComponent,
+    
+  },
+  {
+    path: 'chitiethoadon',
+    component: DetailOrderComponent,
+  },
+  {
+    path: 'product-page',
+    component: DanhMucHangHoaComponent,
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
